@@ -46,7 +46,7 @@ mountain.heightarr.push(0);
 
 let world = new World(ScreenWidth, ScreenHeight, "#2a1010", treeCol, lake, mountain);
 
-let starclustor = new StarCluster(ScreenWidth, ScreenHeight, 1000);
+let starclustor = new StarCluster(ScreenWidth, ScreenHeight, 2000);
 starclustor.makeStars();
 
 let previousTime=0

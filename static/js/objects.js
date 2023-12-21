@@ -79,6 +79,7 @@ class StarCluster{
         this.screenHeight = screenHeight;
         this.screenWidth = screenWidth;
         this.n = n;
+        this.colorSel = ["white", "pink", "lightblue"];
         this.starArray = [];
     }
     makeStars() {
@@ -86,7 +87,8 @@ class StarCluster{
             let obj = {
                 x: Math.random() * this.screenWidth*2,
                 y: Math.random() * this.screenHeight*2,
-                radius: 1,
+                radius: Math.random()*0.8 + 0.2,
+                color: Math.floor(Math.random()*this.colorSel.length),
             }
             this.starArray.push(obj);
         }
@@ -94,7 +96,7 @@ class StarCluster{
     draw(ctx){
         this.starArray.forEach(star => {
             ctx.beginPath();
-            ctx.fillStyle = "white";
+            ctx.fillStyle = this.colorSel[star.color];
             ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
             ctx.fill();
         })

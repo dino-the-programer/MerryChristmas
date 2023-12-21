@@ -14,6 +14,33 @@ body{
     height: 100%;
 }
 
+#wish{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: oblique;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: url("/static/image/test.jpg");
+    background-size: contain;
+    color: transparent;
+}
+
+#grad{
+    position: absolute;
+    top:0%;
+    left:0%;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#00000000,#000000);
+
+}
+
 
 
 
