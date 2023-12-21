@@ -20,7 +20,9 @@ class World{
         ctx.arc(0, 0, this.raduis, 0, 360 * Math.PI / 180);
         ctx.fill();
         this.props[0].array.forEach(tree => {
-            drawTree(ctx, this.raduis, tree.angle, tree.height,"#234f42","#060f1f",4);
+            drawTree(ctx, this.raduis, tree.angle, tree.height, this.props[0].treeColor, this.props[0].stemColor);
+            //drawTree(ctx, this.raduis, tree.angle, tree.height, "#234f42", "#060f1f");
+            //console.log(tree.treeColor);
         });
         drawLake(ctx,this.raduis,this.props[1].waterCol,this.props[1].startangle,this.props[1].stopangle,this.props[1].deptarray);
         ctx.restore();
@@ -32,6 +34,8 @@ class World{
 }
 class treeCollection{
     constructor() {
+        this.stemColor="black";
+        this.treeColor="green";
         this.array = [];
     }
     add(angle, height) {
@@ -64,7 +68,42 @@ class Mountain{
     }
 }
 
-function drawTree(ctx, raduis, angle, height,leafcol,trunkcol,stemThickness) {
+class Santa{
+    constructor(image) {
+        
+    }
+}
+
+class StarCluster{
+    constructor(screenHeight, screenWidth, n) {
+        this.screenHeight = screenHeight;
+        this.screenWidth = screenWidth;
+        this.n = n;
+        this.starArray = [];
+    }
+    makeStars() {
+        for (let i = 0; i < this.n; i++) {
+            let obj = {
+                x: Math.random() * this.screenWidth*2,
+                y: Math.random() * this.screenHeight*2,
+                radius: 1,
+            }
+            this.starArray.push(obj);
+        }
+    };
+    draw(ctx){
+        this.starArray.forEach(star => {
+            ctx.beginPath();
+            ctx.fillStyle = "white";
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fill();
+        })
+    }    
+}
+
+
+
+function drawTree(ctx, raduis, angle, height,leafcol,trunkcol) {
     ctx.beginPath();
     ctx.strokeStyle = trunkcol;
     ctx.fillStyle = leafcol;
@@ -121,6 +160,7 @@ function drawMountain(ctx,raduis,startangle,stopangle,heightarr,mountainCol) {
         }
         ctx.fill();
 }
+
 function lerp(a, b, t) {
     return a + (b - a) * t;
 }

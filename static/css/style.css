@@ -1,7 +1,9 @@
 
 body{
     overflow: hidden;
+    background:radial-gradient(circle at center,#575761,#262335);
 }
+
 
 
 #renderCanvas{
