@@ -49,6 +49,11 @@ let world = new World(ScreenWidth, ScreenHeight, "#2a1010", treeCol, lake, mount
 let starclustor = new StarCluster(ScreenWidth, ScreenHeight, 2000);
 starclustor.makeStars();
 
+let santa = new Santa("santa");
+
+
+
+
 let previousTime=0
 function animate(timestamp) {
     ctx.clearRect(0, 0, ScreenWidth, ScreenHeight);
@@ -57,6 +62,8 @@ function animate(timestamp) {
     previousTime = timestamp;
     //world.angle = 225 * Math.PI / 180;
     world.draw(ctx);
+    santa.move(ScreenWidth);
+    //ctx.fillRect(0, 0, 512, 202);
     requestAnimationFrame(animate);
 }
 

@@ -1,4 +1,6 @@
-
+html{
+    overflow: hidden;
+}
 body{
     overflow: hidden;
     background:radial-gradient(circle at center,#575761,#262335);
@@ -41,6 +43,15 @@ body{
 
 }
 
-
+#santa{
+    position: absolute;
+    top: 50%;
+    left:0px;
+    aspect-ratio: 2.53;
+    width:20%;
+    z-index: 3;
+    background-image: url("/static/image/santa.png");
+    background-size: contain;
+}
 
 

@@ -70,8 +70,22 @@ class Mountain{
 
 class Santa{
     constructor(image) {
-        
+        this.image = document.getElementById(image);
+        this.pos = {
+            x: Number(this.image.style.left.replace("px","")),
+        }
     }
+
+    move(ScreenWidth) {
+        //console.log(this.pos.x);
+        if (this.pos.x < -ScreenWidth*0.2) {
+            this.pos.x = ScreenWidth*0.8;
+        } else {
+            this.pos.x -= 0.5;
+        }
+        this.image.style.left = String(this.pos.x) + "px";
+    }
+    
 }
 
 class StarCluster{
