@@ -95,7 +95,7 @@ class StarCluster{
         this.minSize = minSize;
         this.maxSize = maxSize;
         this.n = n;
-        this.colorSel = ["white", "pink", "lightblue"];
+        this.colorSel = ["white", "pink", "lightblue","lightyellow"];
         this.starArray = [];
     }
     makeStars() {

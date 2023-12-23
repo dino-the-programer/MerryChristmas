@@ -53,7 +53,6 @@ let santa = new Santa("santa");
 
 
 
-
 let previousTime=0
 function animate(timestamp) {
     ctx.clearRect(0, 0, ScreenWidth, ScreenHeight);
@@ -63,7 +62,6 @@ function animate(timestamp) {
     //world.angle = 225 * Math.PI / 180;
     world.draw(ctx);
     santa.move(ScreenWidth);
-    //ctx.fillRect(0, 0, 512, 202);
     starclustor.blink(0.001);
     requestAnimationFrame(animate);
 }
