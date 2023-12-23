@@ -69,8 +69,8 @@ class Mountain{
 }
 
 class Santa{
-    constructor(image) {
-        this.image = document.getElementById(image);
+    constructor(div) {
+        this.image = document.getElementById(div);
         this.pos = {
             x: Number(this.image.style.left.replace("px","")),
         }
@@ -89,9 +89,11 @@ class Santa{
 }
 
 class StarCluster{
-    constructor(screenHeight, screenWidth, n) {
+    constructor(screenHeight, screenWidth,minSize,maxSize, n) {
         this.screenHeight = screenHeight;
         this.screenWidth = screenWidth;
+        this.minSize = minSize;
+        this.maxSize = maxSize;
         this.n = n;
         this.colorSel = ["white", "pink", "lightblue"];
         this.starArray = [];
@@ -101,8 +103,9 @@ class StarCluster{
             let obj = {
                 x: Math.random() * this.screenWidth*2,
                 y: Math.random() * this.screenHeight*2,
-                radius: Math.random()*0.8 + 0.2,
-                color: Math.floor(Math.random()*this.colorSel.length),
+                radius: Math.random()*this.maxSize + this.minSize,
+                color: Math.floor(Math.random() * this.colorSel.length),
+                rmove:1,
             }
             this.starArray.push(obj);
         }
@@ -114,7 +117,19 @@ class StarCluster{
             ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
             ctx.fill();
         })
-    }    
+    }
+    blink(ds) {
+        this.starArray.forEach(star => {
+            if (star.radius > this.maxSize) {
+                star.radius = this.maxSize;
+                star.rmove = -1;
+            } else if (star.radius < this.minSize) {
+                star.radius = this.minSize;
+                star.rmove = 1;
+            }
+            star.radius += ds * star.rmove;
+        })
+    }
 }
 
 
@@ -165,16 +180,18 @@ function drawLake(ctx, raduis, waterCol, startangle, stopangle, deptharray) {
 function drawMountain(ctx,raduis,startangle,stopangle,heightarr,mountainCol) {
     ctx.beginPath();
         ctx.fillStyle = mountainCol;
-        ctx.strokeStyle = "brown";
+        ctx.strokeStyle = "#fafafa";
         ctx.rotate(startangle * Math.PI / 180);
         ctx.moveTo(0, raduis + heightarr[0]);
         ctx.rotate(-startangle * Math.PI / 180);
         for (let i=1; i < heightarr.length; i++){
-            ctx.rotate(lerp(270,360,i/heightarr.length) * Math.PI / 180);
+            ctx.rotate(lerp(startangle,stopangle,i/heightarr.length) * Math.PI / 180);
             ctx.lineTo(0, raduis + heightarr[i]);
-            ctx.rotate(-lerp(270,360,i/heightarr.length) * Math.PI / 180);
-        }
-        ctx.fill();
+            ctx.rotate(-lerp(startangle,stopangle,i/heightarr.length) * Math.PI / 180);
+    }
+    ctx.lineWidth = 10;
+    ctx.stroke();
+    ctx.fill();
 }
 
 function lerp(a, b, t) {

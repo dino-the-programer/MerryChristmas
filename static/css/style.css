@@ -28,9 +28,22 @@ body{
     font-style: oblique;
     -webkit-background-clip: text;
     background-clip: text;
-    background-image: url("/static/image/test.jpg");
-    background-size: contain;
+    background-image: linear-gradient(90deg,#F3EDC8,#EAD196,#BF3131,#7D0A0A);/*url("/static/image/test.jpg");*/
+    background-size: 400% 400%;
     color: transparent;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 50% 100%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
 }
 
 #grad{

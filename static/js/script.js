@@ -28,7 +28,7 @@ for (let i = 0; i < 15; i++){
 lake.deptarray.push(0);
 
 
-let mountain = new Mountain(270, 360, "brown");
+let mountain = new Mountain(270, 360, "#532c28");
 let mountainRes = 20;
 mountain.heightarr.push(0);
 for (let i = 0; i < mountainRes; i++){
@@ -46,7 +46,7 @@ mountain.heightarr.push(0);
 
 let world = new World(ScreenWidth, ScreenHeight, "#2a1010", treeCol, lake, mountain);
 
-let starclustor = new StarCluster(ScreenWidth, ScreenHeight, 2000);
+let starclustor = new StarCluster(ScreenWidth, ScreenHeight,0.2,0.8, 2000);
 starclustor.makeStars();
 
 let santa = new Santa("santa");
@@ -64,6 +64,7 @@ function animate(timestamp) {
     world.draw(ctx);
     santa.move(ScreenWidth);
     //ctx.fillRect(0, 0, 512, 202);
+    starclustor.blink(0.001);
     requestAnimationFrame(animate);
 }
 
