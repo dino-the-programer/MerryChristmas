@@ -28,7 +28,7 @@ body{
     font-style: oblique;
     -webkit-background-clip: text;
     background-clip: text;
-    background-image: linear-gradient(90deg,#F3EDC8,#EAD196,#BF3131,#7D0A0A);/*url("/static/image/test.jpg");*/
+    background-image: linear-gradient(90deg,#F3EDC8,#EAD196,#BF3131,#7D0A0A);
     background-size: 400% 400%;
     color: transparent;
     animation: gradient 8s ease infinite;
@@ -76,7 +76,7 @@ body{
     aspect-ratio: 2.53;
     width:20%;
     z-index: 3;
-    background-image: url("/static/image/santa.png");
+    background-image: url("static/image/santa.png");
     background-size: contain;
 }
 
@@ -103,7 +103,7 @@ body{
     left: 0%;
     width: 10%;
     height: 5%;
-    background-image: url("/static/image/share.png");
+    background-image: url("static/image/share.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
