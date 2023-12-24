@@ -6,7 +6,6 @@ const ScreenHeight = canvas.height = window.innerHeight;
 
 const ctx = canvas.getContext("2d");
 
-//ctx.fillRect(ScreenWidth-100, ScreenHeight-100,100,100);
 let treeCol = new treeCollection();
 {
     let startAngle = 30;
@@ -17,7 +16,6 @@ let treeCol = new treeCollection();
         let maxHeight = ScreenHeight * 0.08;
         let minHeight = ScreenHeight * 0.05;
         treeCol.add(Math.random() * (stopAngle - startAngle + 1) + startAngle, Math.random() * maxHeight + minHeight);
-        //treeCol.add(Math.random()*180, Math.random()*maxHeight+minHeight);
     }
 }
 
@@ -59,7 +57,6 @@ function animate(timestamp) {
     starclustor.draw(ctx);
     world.rotate((Math.PI / 180) * ((timestamp - previousTime) / ScreenWidth)*5);
     previousTime = timestamp;
-    //world.angle = 225 * Math.PI / 180;
     world.draw(ctx);
     santa.move(ScreenWidth);
     starclustor.blink(0.001);

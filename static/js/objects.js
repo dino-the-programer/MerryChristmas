@@ -21,8 +21,6 @@ class World{
         ctx.fill();
         this.props[0].array.forEach(tree => {
             drawTree(ctx, this.raduis, tree.angle, tree.height, this.props[0].treeColor, this.props[0].stemColor);
-            //drawTree(ctx, this.raduis, tree.angle, tree.height, "#234f42", "#060f1f");
-            //console.log(tree.treeColor);
         });
         drawLake(ctx,this.raduis,this.props[1].waterCol,this.props[1].startangle,this.props[1].stopangle,this.props[1].deptarray);
         ctx.restore();
